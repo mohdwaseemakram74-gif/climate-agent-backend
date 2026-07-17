@@ -2,7 +2,7 @@ import os
 from langchain_groq import ChatGroq
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_community.tools.tavily_search import TavilySearchResults
 
 # ---- 1. LLM (free Groq API) ----
 llm = ChatGroq(
@@ -12,7 +12,7 @@ llm = ChatGroq(
 )
 
 # ---- 2. Tools the agent can use ----
-search_tool = DuckDuckGoSearchRun()
+search_tool = TavilySearchResults(max_results=5)
 tools = [search_tool]
 
 # ---- 3. Agent prompt ----

@@ -6,7 +6,7 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 
 # ---- 1. LLM (free Groq API) ----
 llm = ChatGroq(
-    model="llama-3.3-70b-versatile",
+    model=os.environ.get("GROQ_MODEL", "llama-3.1-8b-instant"),,
     temperature=0.3,
     api_key=os.environ["GROQ_API_KEY"],
 )
